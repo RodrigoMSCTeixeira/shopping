@@ -1,4 +1,7 @@
-# shopping-bag-ts
+# Shopping
+```
+Projeto de uma Loja Virual em VueJS 3
+```
 
 ## Project setup
 ```
