@@ -44,6 +44,7 @@
 </template>
 
 <script lang="ts">
+import { Product } from '@/store'
 import { defineComponent } from 'vue'
 import { mapState, useStore } from 'vuex'
 
@@ -60,8 +61,7 @@ export default defineComponent({
   methods: {
     orderTotal() {
       let total = 0
-
-      this.productsInBag.forEach((item: any) => {
+      this.productsInBag.forEach((item: Product) => {
         total += item.price * item.quantity
       })
 

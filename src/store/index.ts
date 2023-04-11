@@ -2,12 +2,13 @@ import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
 import axios from 'axios'
 
-interface Product {
+export interface Product {
   id: number,
   title: string,
   price: number,
   description: string,
-  image: string
+  image: string,
+  quantity: number
 }
 
 export interface State {
@@ -41,8 +42,8 @@ export const store = createStore<State>({
     },
 
     removeFromBag(state, productId) {
-      const updateBag: any = state.productsInBag.filter(
-        (item: any) => productId != item.id,
+      const updateBag = state.productsInBag.filter(
+        (item) => productId != item.id,
       )
       state.productsInBag = updateBag
       localStorage.setItem('productsInBag', JSON.stringify(state.productsInBag))

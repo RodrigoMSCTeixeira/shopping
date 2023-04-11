@@ -29,6 +29,7 @@
 </template>
 
 <script lang="ts">
+import { Product } from '@/store'
 import { defineComponent } from 'vue'
 import { mapState, useStore } from 'vuex'
 
@@ -41,13 +42,13 @@ export default defineComponent({
   },
   computed: mapState(['products', 'productsInBag']),
   methods: {
-    addToBag(product: any) {
+    addToBag(product: Product) {
       product.quantity = 1
       this.store.dispatch('addToBag', product)
     },
 
-    isInBag(product: any) {
-      return this.productsInBag.find((item: any) => item.id == product.id)
+    isInBag(product: Product) {
+      return this.productsInBag.find((item: Product) => item.id == product.id)
     },
   },
 })
