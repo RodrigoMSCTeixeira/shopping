@@ -1,6 +1,6 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
-import axios from 'axios'
+import { RequestApi } from '@/services/RequestApi'
 
 export interface Product {
   id: number,
@@ -51,10 +51,8 @@ export const store = createStore<State>({
   },
 
   actions: {
-    loadProducts({commit}) {
-      axios.get('https://fakestoreapi.com/products').then(({data}) => {
-        commit('loadProducts', data)
-      })
+    async loadProducts({commit}) {
+      commit('loadProducts', await new RequestApi().info)
     },
 
     loadBag({ commit }) {

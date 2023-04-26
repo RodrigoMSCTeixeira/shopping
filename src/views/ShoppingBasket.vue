@@ -29,7 +29,7 @@
               <button @click="product.quantity++">+</button>
             </span>
             <span class="amount">
-              R$ {{ (product.price * product.quantity).toFixed(2) }}
+              R$ {{ itemTotal(product.price, product.quantity) }}
             </span>
           </div>
         </div>
@@ -44,9 +44,9 @@
 </template>
 
 <script lang="ts">
-import { Product } from '@/store'
 import { defineComponent } from 'vue'
 import { mapState, useStore } from 'vuex'
+import { ItemTotal, OrderTotal } from '@/services/OrderTotal'
 
 export default defineComponent({
   name: 'ShoppingBasket',
@@ -59,13 +59,12 @@ export default defineComponent({
   computed: mapState(['productsInBag']),
 
   methods: {
-    orderTotal() {
-      let total = 0
-      this.productsInBag.forEach((item: Product) => {
-        total += item.price * item.quantity
-      })
+    itemTotal(price: number, quantity: number) {
+      return new ItemTotal(price, quantity).subtotal
+    },
 
-      return total.toFixed(2)
+    orderTotal() {
+      return new OrderTotal(this.productsInBag).total
     },
   },
 })
