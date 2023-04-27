@@ -1,15 +1,7 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
 import { RequestApi } from '@/services/RequestApi'
-
-export interface Product {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  image: string,
-  quantity: number
-}
+import { Product } from '@/utils/interfaces/Product'
 
 export interface State {
   products: Array<Product>,

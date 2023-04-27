@@ -46,7 +46,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { mapState, useStore } from 'vuex'
-import { ItemTotal, OrderTotal } from '@/services/OrderTotal'
+import { Amount } from '@/utils/class/Amount'
+import { OrderTotal } from '@/utils/class/OrderTotal'
 
 export default defineComponent({
   name: 'ShoppingBasket',
@@ -60,7 +61,7 @@ export default defineComponent({
 
   methods: {
     itemTotal(price: number, quantity: number) {
-      return new ItemTotal(price, quantity).subtotal
+      return new Amount(price, quantity).subtotal
     },
 
     orderTotal() {

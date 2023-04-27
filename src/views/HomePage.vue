@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { Product } from '@/store'
+import { Product } from '@/utils/interfaces/Product'
 import { defineComponent } from 'vue'
 import { mapState, useStore } from 'vuex'
 

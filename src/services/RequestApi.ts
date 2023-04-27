@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Product } from "@/store";
+import { Product } from "@/utils/interfaces/Product";
 
 export class RequestApi {
 
-    protected items = [] as Array<Product>
+    private items = [] as Array<Product>
 
     get info() {
         return RequestApi.request(this.items)
